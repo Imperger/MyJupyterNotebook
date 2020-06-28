@@ -5,7 +5,7 @@ RUN useradd -m ${user} && \
     echo ${user}:${user} | chpasswd
 
 RUN pip install --upgrade pip && \
-    pip install jupyter pandas numpy scipy plotly gmaps googlemaps opencv-python pillow pytesseract
+    pip install jupyter pandas numpy scipy chart-studio plotly gmaps googlemaps opencv-python pillow pytesseract
 
 RUN apt-get update && \
     apt-get -y upgrade && \
