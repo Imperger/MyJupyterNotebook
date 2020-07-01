@@ -17,9 +17,9 @@ RUN jupyter nbextension enable --py --sys-prefix gmaps
 #Julialang
 RUN mkdir /julia && \
     cd /julia && \
-    wget -O julia.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.1-linux-x86_64.tar.gz && \
+    wget -O julia.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz && \
     tar -xzvf julia.tar.gz && \
-    ln -s /julia/julia-1.0.1/bin/julia /bin/julia
+    ln -s /julia/julia-1.4.2/bin/julia /bin/julia
 
 RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg; Pkg.add("Plots"); Pkg.add("PyPlot"); Pkg.build("PyPlot")'
 
