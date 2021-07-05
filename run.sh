@@ -8,4 +8,6 @@ docker run -d \
     --name jupyter \
     --ip 192.168.0.3 \
     --network home_lan \
-    -v ${PWD}/data:/home/${user} jupyter
+    -v ${PWD}/data:/home/${user} \
+    -v ${PWD}/config:/srv/jupyterhub \
+    jupyter
