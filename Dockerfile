@@ -22,7 +22,8 @@ RUN mkdir /julia && \
     tar -xzvf julia.tar.gz && \
     ln -s /julia/julia-1.6.1/bin/julia /bin/julia
 
+
 #RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg; Pkg.add("Plots"); Pkg.add("PyPlot"); Pkg.build("PyPlot")'
-RUN julia -e 'using Pkg; Pkg.add("IJulia");'
+RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg.build("IJulia");'
 
 CMD ["jupyterhub", "--port", "80"]
