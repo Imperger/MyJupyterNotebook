@@ -11,6 +11,7 @@ Credentials  `vitaly:vitaly`
   * opencv-python
   * pillow
   * pytesseract
+  * tensorflow
 * Julia
   * Plots
   * PyPlot
