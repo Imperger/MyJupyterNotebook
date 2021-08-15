@@ -6,8 +6,8 @@ docker build -t jupyter --build-arg user=${user} .
 docker run -d \
     --rm \
     --name jupyter \
-    --ip 192.168.0.3 \
-    --network home_lan \
+    -e USER=${user} \
+    -p 80:80 \
     -v ${PWD}/data:/home/${user} \
     -v ${PWD}/config:/srv/jupyterhub \
     jupyter

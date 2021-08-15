@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Login as ${USER}. Home dir: ${HOME}"
+if [ ! "$(ls -A $HOME)" ]; then
+    cp -R /home/_$USER/. /home/$USER/
+fi
+
+jupyterhub --port 80

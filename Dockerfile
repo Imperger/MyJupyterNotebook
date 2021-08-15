@@ -4,16 +4,17 @@ ARG user
 RUN useradd -m ${user} && \
     echo ${user}:${user} | chpasswd
 
-RUN pip install --upgrade pip && \
-    pip install jupyter pandas numpy scipy chart-studio plotly gmaps googlemaps opencv-python pillow pytesseract
-
 RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y wget && \
     apt-get install -y  --allow-unauthenticated libgtk2.0-dev && \
     apt-get install -y tesseract-ocr libtesseract-dev
 
+RUN pip install --upgrade pip && \
+    pip install jupyter pandas numpy scipy chart-studio plotly gmaps googlemaps opencv-python pillow pytesseract tensorflow 
+
 RUN jupyter nbextension enable --py --sys-prefix gmaps
+
 
 #Julialang
 RUN mkdir /julia && \
@@ -22,8 +23,20 @@ RUN mkdir /julia && \
     tar -xzvf julia.tar.gz && \
     ln -s /julia/julia-1.6.1/bin/julia /bin/julia
 
+USER ${user}
 
 #RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg; Pkg.add("Plots"); Pkg.add("PyPlot"); Pkg.build("PyPlot")'
 RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg.build("IJulia");'
 
-CMD ["jupyterhub", "--port", "80"]
+USER root
+
+RUN chown ${user}:${user} /srv/jupyterhub
+
+COPY bin/start_jupyter /usr/local/bin/
+RUN chmod +x /usr/local/bin/start_jupyter
+
+RUN mv /home/${user} /home/_${user}
+
+USER ${user}
+
+CMD ["start_jupyter"]
