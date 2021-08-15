@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get install -y tesseract-ocr libtesseract-dev
 
 RUN pip install --upgrade pip && \
-    pip install jupyter pandas numpy scipy chart-studio plotly gmaps googlemaps opencv-python pillow pytesseract tensorflow 
+    pip install jupyter pandas numpy scipy chart-studio plotly gmaps googlemaps opencv-python pillow pytesseract tensorflow matplotlib
 
 RUN jupyter nbextension enable --py --sys-prefix gmaps
 
