@@ -25,8 +25,8 @@ RUN mkdir /julia && \
 
 USER ${user}
 
-#RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg; Pkg.add("Plots"); Pkg.add("PyPlot"); Pkg.build("PyPlot")'
-RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg.build("IJulia");'
+RUN julia -e 'using Pkg; Pkg.add("IJulia");'
+RUN julia -e 'using Pkg; Pkg.add("Plots");'
 
 USER root
 
