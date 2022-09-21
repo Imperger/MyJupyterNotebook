@@ -1,14 +1,27 @@
 #!/bin/bash
-user="vitaly"
 
-docker build -t jupyter --build-arg user=${user} .
+set -eu
 
-docker run -d \
+docker build -t jupyter .
+
+VOLUME="jupyter"
+
+if ! docker volume inspect $VOLUME; then
+    docker volume create --driver local \
+        --opt type=none \
+        --opt device=$PWD/data \
+        --opt o=bind \
+        $VOLUME
+fi
+
+docker run \
+    -d \
     --rm \
+    -it \
     --name jupyter \
     --gpus all \
-    -e USER=${user} \
-    -p 80:80 \
-    -v ${PWD}/data:/home/${user} \
-    -v ${PWD}/config:/srv/jupyterhub \
+    -e NVIDIA_VISIBLE_DEVICES=all \
+    -e NVIDIA_DRIVER_CAPABILITIES=all \
+    -p 8888:8888 \
+    -v $VOLUME:/home/jovyan \
     jupyter
