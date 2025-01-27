@@ -8,3 +8,5 @@
   * Clp
   * Cbc
   * GLPK
+  * HiGHS
+  * Ipopt

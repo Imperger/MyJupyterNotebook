@@ -11,4 +11,14 @@ RUN mkdir /julia && \
 
 USER jovyan
 
-RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg.add("Plots"); Pkg.add("CUDA"); Pkg.add("Flux"); Pkg.add("Clp"); Pkg.add("Cbc"); Pkg.add("GLPK"); Pkg.add("JuMP");'
+RUN julia -e 'using Pkg; \
+    Pkg.add("IJulia"); \
+    Pkg.add("Plots"); \
+    Pkg.add("CUDA"); \
+    Pkg.add("Flux"); \
+    Pkg.add("Clp"); \
+    Pkg.add("Cbc"); \
+    Pkg.add("GLPK"); \
+    Pkg.add("JuMP"); \
+    Pkg.add("HiGHS"); \
+    Pkg.add("Ipopt");'
