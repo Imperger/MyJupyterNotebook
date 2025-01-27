@@ -5,9 +5,9 @@ USER root
 #Julialang
 RUN mkdir /julia && \
     cd /julia && \
-    wget -O julia.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.1-linux-x86_64.tar.gz && \
+    wget -O julia.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-1.11.3-linux-x86_64.tar.gz && \
     tar -xzvf julia.tar.gz && \
-    ln -s /julia/julia-1.8.1/bin/julia /bin/julia
+    ln -s /julia/julia-1.11.3/bin/julia /bin/julia
 
 USER jovyan
 
