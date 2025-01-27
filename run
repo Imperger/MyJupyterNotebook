@@ -23,5 +23,5 @@ docker run \
     -e NVIDIA_VISIBLE_DEVICES=all \
     -e NVIDIA_DRIVER_CAPABILITIES=all \
     -p 8888:8888 \
-    -v $VOLUME:/home/jovyan \
+    -v $VOLUME:/home/jovyan/work \
     jupyter

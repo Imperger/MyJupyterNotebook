@@ -5,3 +5,6 @@
   * Plots
   * CUDA
   * Flux
+  * Clp
+  * Cbc
+  * GLPK
